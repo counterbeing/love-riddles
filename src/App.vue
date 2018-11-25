@@ -1,12 +1,15 @@
 <template>
   <div>
+    <h1>Build an encrypted riddle!</h1>
     <h2>Riddle</h2>
+    <p>These riddle is written in <a target='_blank' href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">markdown</a>, and displayed first.</p>
     <textarea name="riddle" id="riddle" v-model='riddle' cols="30" rows="10"></textarea>
 
     <h2>Password</h2>
     <input type="text" v-model='password'>
     
-    <h2>Message</h2>
+    <h2>Secret Message</h2>
+    <p>The message is also written in <a target='_blank' href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">markdown</a>, but is not displayed until the correct password is entered.</p>
     <textarea v-model='message' ref='message' name="message" id="message" cols="30" rows="10"></textarea>
     <button @click='download'>Download</button>
 
@@ -79,18 +82,6 @@ function download(filename, text) {
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
 
 ul {
   list-style-type: none;
@@ -113,5 +104,44 @@ iframe {
   bottom: 0;
   height: 100%;
   width: 50%;
+}
+
+.encrypted-message {
+    font-family: monospace;
+    max-height: 300px;
+    overflow: scroll;
+    white-space: pre-wrap;    
+    overflow-wrap: break-word;
+    padding: 10px;
+    background-color: #333;
+    color: #EEE;
+}
+body {
+    font-family: 'Kalam', cursive;
+    color: #333;
+}
+.wrapper {
+    text-align: left;
+    max-width: 500px;
+    margin: auto;
+}
+h1,h2,h3,h4 {
+    font-family: 'Scope One', serif;
+}
+.pass-entry {
+    text-align: center;
+}
+.pass-entry input {
+    width: 80%;
+    font-size: 30px;
+    padding: 10px;
+    text-align: center;
+}
+.pass-entry input.complete {
+    color: green;
+}
+
+#guess-list {
+    list-style: none;
 }
 </style>
