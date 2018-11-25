@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+const FileManagerPlugin = require('filemanager-webpack-plugin');
 
 module.exports = {
   entry: './src/main.js',
@@ -108,6 +109,15 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
+    }),
+
+    new FileManagerPlugin({
+      onEnd: {
+        copy: [
+          { source: './dist', destination: 'deploy/dist'},
+          { source: './index.html', destination: 'deploy/' }
+        ]
+      }
     })
   ])
 }
