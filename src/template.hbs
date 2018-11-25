@@ -1,0 +1,95 @@
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+        <script type="text/javascript" src="https://cdn.rawgit.com/ricmoo/aes-js/e27b99df/index.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Kalam|Scope+One" rel="stylesheet">
+
+        <script>
+            function decrypt() {
+                let passEl = document.getElementById("password")
+                let pass = passEl.value
+                try {
+                    var decrypted = CryptoJS.AES.decrypt(
+                        document.getElementById("message").innerHTML, 
+                        pass
+                        ).toString(CryptoJS.enc.Utf8);
+                    document.getElementById("output").innerHTML = decrypted;
+                    console.log(decrypted)
+                    if(!decrypted) throw('badPassword')
+                    passEl.classList.add('complete')
+                    passEl.setAttribute('disabled', 'disabled')
+                } catch(e) {
+                    let list = document.getElementById('guess-list')
+                    let item = document.createElement('li');
+                    item.appendChild(document.createTextNode(pass));
+                    list.appendChild(item);
+                }
+            } 
+
+            
+        </script>
+        <style>
+            .encrypted-message {
+                font-family: monospace;
+                max-height: 300px;
+                overflow: scroll;
+                white-space: pre-wrap;    
+                overflow-wrap: break-word;
+                padding: 10px;
+                background-color: #333;
+                color: #EEE;
+            }
+            body {
+                font-family: 'Kalam', cursive;
+           }
+            .wrapper {
+                text-align: left;
+                max-width: 500px;
+                margin: auto;
+            }
+            h1,h2,h3,h4 {
+                font-family: 'Scope One', serif;
+            }
+            .pass-entry {
+                text-align: center;
+            }
+            .pass-entry input {
+                width: 80%;
+                font-size: 30px;
+                padding: 10px;
+                text-align: center;
+            }
+            .pass-entry input.complete {
+                color: green;
+            }
+
+            #guess-list {
+                list-style: none;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class='wrapper'>
+            <h1>A puzzle to solve!</h1>
+            <h2>Riddle</h2>
+            <div>{{{riddle}}}</div>
+
+
+            <h2>Encrypted message</h2>
+            <p>This is the actual raw encrypted message. The correct password will decrypt it!</p>
+            <div id='message' class='encrypted-message'>{{message}}</div>
+
+            <h2>Password</h2>
+            <p>Guess and press enter.</p>
+            <div class='pass-entry'>
+                <input type="text" id='password' onchange="decrypt()">
+                <ul id="guess-list"></ul>
+            </div>
+
+            <h2>Decrypted Message</h2>
+            <div id='output'></div>
+        </div>
+    </body>
+</html>
+
