@@ -14,7 +14,6 @@
                         pass
                         ).toString(CryptoJS.enc.Utf8);
                     document.getElementById("output").innerHTML = decrypted;
-                    console.log(decrypted)
                     if(!decrypted) throw('badPassword')
                     passEl.classList.add('complete')
                     passEl.setAttribute('disabled', 'disabled')
