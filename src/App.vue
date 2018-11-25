@@ -1,7 +1,7 @@
 <template>
     <div class='outer-flex'>
       <div class='flex-left'>
-        <h1>Build an encrypted riddle!</h1>
+        <h1>Riddlesticks! Make someone a riddle where the solution gives them the password to a secret message.</h1>
         <h2>Riddle</h2>
         <p>These riddle is written in <a target='_blank' href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">markdown</a>, and displayed first.</p>
         <markdown-editor  v-model='riddle'></markdown-editor>
@@ -14,6 +14,12 @@
         <h2>Secret Message</h2>
         <p>The message is also written in <a target='_blank' href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">markdown</a>, but is not displayed until the correct password is entered.</p>
         <markdown-editor  v-model='message'></markdown-editor>
+
+        <p>
+        Once you have the riddle/password/message filled in, download it
+        and send it to your loved one. The message will look like the one on the
+        right hand side of the screen. You can test it out over there.
+        </p>
         <a class='button' @click='download'>Download</a>
       </div>
 
