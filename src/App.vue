@@ -158,8 +158,7 @@ h1,h2,h3,h4 {
 .outer-flex {
   display: flex;
   width: 100%;
-  height: 75%;
-  max-height: 75%;
+  height: 100%;
 }
 
 .flex-left {
