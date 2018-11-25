@@ -43,7 +43,7 @@ export default {
   data () {
     return {
       riddle: exampleRiddle,
-      password: 'fido adieu',
+      password: 'fido pumpkin',
       message: exampleMessage,
     }
   },
