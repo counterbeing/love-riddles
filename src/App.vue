@@ -3,27 +3,31 @@
       <div class='flex-left'>
         <h1>Riddlesticks! Make someone a riddle where the solution gives them
         the password to a secret message.</h1>
-        <h2>Riddle</h2>
-        <p>This riddle is written in <a target='_blank'
-        href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">markdown</a>,
-        and displayed first.</p>
+        <h2>Write Your Riddle Below</h2>
+        <p>Replace the demo riddle with your own, and preview it on the right.</p>
         <markdown-editor  v-model='riddle'></markdown-editor>
 
-        <h2>Password</h2>
+        <h2>Password: The Answer To Your Riddle</h2>
+        <p>Don't worry about spaces and punctuation, they will be ignored.
+        Make sure the password is something they can guess based on the
+        riddle above.</p>
         <div class='pass-entry'>
           <input type="text" v-model='password'>
         </div>
         
-        <h2>Secret Message</h2>
-        <p>The message is also written in <a target='_blank'
-        href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">markdown</a>,
-        but is not displayed until the correct password is entered.</p>
+        <h2>Compose Your Secret Message</h2>
+        <p>This message will not be revealed until the correct password is
+        typed. The right side of the page is an exact replica of what your
+        recipeient will see, including the password access and formatting.
+        Play with it, befor you download!</p>
         <markdown-editor  v-model='message'></markdown-editor>
 
         <p>
-        Once you have the riddle/password/message filled in, download it
-        and send it to your loved one. The message will look like the one on the
-        right hand side of the screen. You can test it out over there.
+        Once you have the riddle/password/message filled in, download it and
+        send it to your loved one. They work on iPhones through iMessage, and
+        they work well through email when someone opens it in a browser. The
+        message will look like the one on the right hand side of the screen.
+        You can test it out over there.
         </p>
         <a class='button' @click='download'>Download</a>
       </div>
