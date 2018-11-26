@@ -1,4 +1,4 @@
-# A Surprise Awaits
+# This is a demo riddle, replace it!
 
 Dearest Marjory,
 
