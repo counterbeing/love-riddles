@@ -68,8 +68,7 @@ export default {
     },
     simplifiedPassword: function() {
       return this.password
-        .replace('-', '')
-        .replace(' ', '')
+        .replace(/(-|\s|,|\.)/g, '')
         .toLowerCase()
     }
   },

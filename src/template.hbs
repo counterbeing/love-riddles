@@ -8,8 +8,7 @@
             
             function simplifyPassword(password) {
                 return password
-                    .replace('-', '')
-                    .replace(' ', '')
+                    .replace(/(-|\s|,|\.)/g, '')
                     .toLowerCase()
             }
             function decrypt() {
