@@ -10,7 +10,8 @@ The neat thing about this, is that the resulting message and riddle come in a si
 Once the riddle is solved, the message is revealed.
 
 [Check out the live version here](https://riddlesticks.corylogan.com)
-[Example of a created riddle](https://riddlesticks.corylogan.com/demo.html)
+
+[Example of a created riddle](https://riddlesticks.corylogan.com/demo.html) (The password is the same as the default example "fido boo")
 
 ## Current considerations
 - Should we provide a server so that riddles can be stored and shared via secret urls? This feels a little counter to the point, but would allow it to work better on mobile.
