@@ -115,7 +115,8 @@ if (process.env.NODE_ENV === 'production') {
       onEnd: {
         copy: [
           { source: './dist', destination: 'deploy/dist'},
-          { source: './index.html', destination: 'deploy/' }
+          { source: './index.html', destination: 'deploy/' },
+          { source: './demo.html', destination: 'deploy/' }
           // { source: './CNAME', destination: 'deploy/CNAME'}
         ]
       }
