@@ -1,4 +1,4 @@
-# This is a demo riddle, replace it!
+# This is a demo riddle, replace me!
 
 Dearest Marjory,
 
