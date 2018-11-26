@@ -54,6 +54,7 @@ export default {
       riddle: exampleRiddle,
       password: 'fido boo',
       message: exampleMessage,
+      generateCount: 0
     }
   },
   computed: {
@@ -77,7 +78,10 @@ export default {
     }
   },
   watch: {
-    renderedTemplate: function() { this.setIframe(); }
+    renderedTemplate: function() { 
+      this.setIframe(); 
+      this.generateCount += 1
+    },
   },
   methods: {
     setIframe: function() {
@@ -94,10 +98,17 @@ export default {
       document.body.appendChild(element)
       element.click()
       document.body.removeChild(element)
+      this.generateCount = 0
+    },
+    unloadPage: function() {
+      if(this.generateCount > 2){
+        return "There have been changes on the page since you last downloaded your riddle! If you leave your changes will be lost!";
+      }
     }
   },
   mounted: function() {
     this.setIframe()
+    window.onbeforeunload = this.unloadPage;
   }
 }
 </script>
