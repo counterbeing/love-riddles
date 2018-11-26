@@ -203,9 +203,10 @@ h1,h2,h3,h4 {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
-    margin: 20px;
-    width: 80%;
+    font-size: 30px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    width: 100%;
     cursor: pointer;
 }
 
