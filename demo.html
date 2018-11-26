@@ -1,0 +1,122 @@
+<html>
+    <head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js"></script>
+        <script type="text/javascript" src="https://cdn.rawgit.com/ricmoo/aes-js/e27b99df/index.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Kalam|Scope+One" rel="stylesheet">
+
+        <script>
+            
+            function simplifyPassword(password) {
+                return password
+                    .replace(/(-|\s|,|\.)/g, '')
+                    .toLowerCase()
+            }
+            function decrypt() {
+                let passEl = document.getElementById("password")
+                let pass = passEl.value
+                let spass = simplifyPassword(pass)
+                try {
+                    var decrypted = CryptoJS.AES.decrypt(
+                        document.getElementById("message").innerHTML, 
+                        spass
+                        ).toString(CryptoJS.enc.Utf8);
+                    document.getElementById("output").innerHTML = decrypted;
+                    if(!decrypted) throw('badPassword')
+                    passEl.classList.add('complete')
+                    passEl.setAttribute('disabled', 'disabled')
+                    window.scrollTo(0,document.body.scrollHeight);
+                } catch(e) {
+                    let list = document.getElementById('guess-list')
+                    let item = document.createElement('li');
+                    item.appendChild(document.createTextNode(pass));
+                    list.appendChild(item);
+                }
+            } 
+
+            
+        </script>
+        <style>
+            .encrypted-message {
+                font-family: monospace;
+                max-height: 300px;
+                overflow: scroll;
+                white-space: pre-wrap;    
+                overflow-wrap: break-word;
+                padding: 10px;
+                background-color: #333;
+                color: #EEE;
+            }
+
+            a {
+            color: #42b983;
+            }
+            body {
+                font-family: 'Kalam', cursive;
+                color: #333;
+           }
+            .wrapper {
+                text-align: left;
+                max-width: 500px;
+                margin: auto;
+            }
+            h1,h2,h3,h4 {
+                font-family: 'Scope One', serif;
+            }
+            .pass-entry {
+                width: 100%;
+                text-align: center;
+            }
+            .pass-entry input {
+                box-sizing: border-box;
+                width: 100%;
+                font-size: 30px;
+                padding: 10px;
+                text-align: center;
+            }
+            .pass-entry input.complete {
+                color: green;
+            }
+
+            #guess-list {
+                list-style: none;
+                color: #f45342;
+            }
+            footer {
+                color: #666;
+                font-size: 80%;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class='wrapper'>
+            <h1>A puzzle to solve!</h1>
+            <h2>Riddle</h2>
+            <div><h3>A Secret Surprise</h3><p>Dearest Marjory,</p>
+<p>I come to you today with a <em>riddle</em> for you to solve! The solution is <strong>two words, in this order</strong>.</p>
+<ol>
+<li>The name of our first pet.</li>
+<li>Our word for affection.</li>
+</ol>
+<p>Good luck!</p>
+</div>
+
+
+            <h2>Encrypted message</h2>
+            <p>This is the actual raw encrypted message. The correct password will decrypt it!</p>
+            <div id='message' class='encrypted-message'>U2FsdGVkX19Xbdl+Mjb5MIviJNOYlm8KdiSJQb6K91oaxmHeVoUwseFFvPQVQ7vCgJTXLEzMdNFuC/kV+PqHaLwN/7qhMJBUvYA2FesB3WfWu0H7k9IkavMbwSYBU/hQzCQ5CB8UJUzpH2RwXzktoLc6t9BECM0ATGHpBdyW/eER34inIeVlNyXfMxeuekMPsb5P/hWLoPsiBxvRYrt1kzNEDpDtHj3To1EZZTjlSAA+CSGyJ1kNqWGhzD190qaQVPBORxkz17ooO8oB7Z960FSkpscB5/teUYUVYmoOq1ymM8BsxWCNGW5MbKFFSg1eB+WWyxJOr8RK/FZ01tp9UAfqahwjokqY+F5iRRE9dBaoQVoiAmsw7wGDfIFU3XR9L8H0JCVpju1n7WuBGh4yyadBHNVrCTT0novbBukCAV8&#x3D;</div>
+
+            <h2>Password</h2>
+            <p>Guess and press enter.</p>
+            <div class='pass-entry'>
+                <input type="text" id='password' onchange="decrypt()" autocapitalize="none">
+                <ul id="guess-list"></ul>
+            </div>
+
+            <h2>Decrypted Message</h2>
+            <div id='output'></div>
+            <footer>Built using <a href="https://riddlesticks.corylogan.com">Riddlesticks</a> by Cory Logan</footer>
+        </div>
+    </body>
+</html>
+
