@@ -162,7 +162,8 @@ h1,h2,h3,h4 {
     text-align: center;
 }
 .pass-entry input {
-    width: 80%;
+    box-sizing: border-box;
+    width: 100%;
     font-size: 30px;
     padding: 10px;
     text-align: center;
