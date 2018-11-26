@@ -5,13 +5,21 @@
         <link href="https://fonts.googleapis.com/css?family=Kalam|Scope+One" rel="stylesheet">
 
         <script>
+            
+            function simplifyPassword(password) {
+                return password
+                    .replace('-', '')
+                    .replace(' ', '')
+                    .toLowerCase()
+            }
             function decrypt() {
                 let passEl = document.getElementById("password")
                 let pass = passEl.value
+                let spass = simplifyPassword(pass)
                 try {
                     var decrypted = CryptoJS.AES.decrypt(
                         document.getElementById("message").innerHTML, 
-                        pass
+                        spass
                         ).toString(CryptoJS.enc.Utf8);
                     document.getElementById("output").innerHTML = decrypted;
                     if(!decrypted) throw('badPassword')

@@ -1,9 +1,12 @@
 <template>
     <div class='outer-flex'>
       <div class='flex-left'>
-        <h1>Riddlesticks! Make someone a riddle where the solution gives them the password to a secret message.</h1>
+        <h1>Riddlesticks! Make someone a riddle where the solution gives them
+        the password to a secret message.</h1>
         <h2>Riddle</h2>
-        <p>These riddle is written in <a target='_blank' href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">markdown</a>, and displayed first.</p>
+        <p>This riddle is written in <a target='_blank'
+        href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">markdown</a>,
+        and displayed first.</p>
         <markdown-editor  v-model='riddle'></markdown-editor>
 
         <h2>Password</h2>
@@ -12,7 +15,9 @@
         </div>
         
         <h2>Secret Message</h2>
-        <p>The message is also written in <a target='_blank' href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">markdown</a>, but is not displayed until the correct password is entered.</p>
+        <p>The message is also written in <a target='_blank'
+        href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">markdown</a>,
+        but is not displayed until the correct password is entered.</p>
         <markdown-editor  v-model='message'></markdown-editor>
 
         <p>
@@ -59,8 +64,14 @@ export default {
       return this.compiledTemplate(context)
     },
     encryptedMessage: function() {
-      return CryptoJS.AES.encrypt(customMDRenderer(this.message), this.password)
+      return CryptoJS.AES.encrypt(customMDRenderer(this.message), this.simplifiedPassword)
     },
+    simplifiedPassword: function() {
+      return this.password
+        .replace('-', '')
+        .replace(' ', '')
+        .toLowerCase()
+    }
   },
   watch: {
     renderedTemplate: function() {
