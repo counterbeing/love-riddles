@@ -77,9 +77,7 @@ export default {
     }
   },
   watch: {
-    renderedTemplate: function() {
-      this.setIframe();
-    }
+    renderedTemplate: function() { this.setIframe(); }
   },
   methods: {
     setIframe: function() {
@@ -102,22 +100,29 @@ export default {
     this.setIframe()
   }
 }
-
-function download(filename, text) {
-
-}
-
 </script>
 
 <style lang="scss">
-html, body {
-  height: 100%;
+div {
+  margin: 0;
+	padding: 0;
+	border: 0;
   box-sizing: border-box;
 }
+html, body {
+  height: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
     font-family: 'Kalam', cursive;
     color: #333;
     display: flex;
+}
+
+a {
+  color: #42b983;
 }
 
 ul {
@@ -130,8 +135,8 @@ li {
   margin: 0 10px;
 }
 
-a {
-  color: #42b983;
+h1,h2,h3,h4 {
+    font-family: 'Scope One', serif;
 }
 
 iframe {
@@ -155,9 +160,7 @@ iframe {
     max-width: 500px;
     margin: auto;
 }
-h1,h2,h3,h4 {
-    font-family: 'Scope One', serif;
-}
+
 .pass-entry {
     text-align: center;
 }
@@ -178,21 +181,23 @@ h1,h2,h3,h4 {
 
 .outer-flex {
   display: flex;
-  width: 100%;
   height: 100%;
+  width: 100%;
 }
 
 .flex-left {
   flex: 0 1 50%;
-  min-height: 100%;
+  height: 100%;
   max-width: 50%;
-  padding: .5em;
+  overflow-y: scroll;
+  padding: 2em;
 }
 
 .flex-right {
   flex: 0 1 50%;
-  min-height: 100%;
+  height: 100%;
   max-width: 50%;
+  padding: 2em;
 }
 
 .button {
