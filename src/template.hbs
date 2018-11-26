@@ -25,6 +25,7 @@
                     if(!decrypted) throw('badPassword')
                     passEl.classList.add('complete')
                     passEl.setAttribute('disabled', 'disabled')
+                    window.scrollTo(0,document.body.scrollHeight);
                 } catch(e) {
                     let list = document.getElementById('guess-list')
                     let item = document.createElement('li');
