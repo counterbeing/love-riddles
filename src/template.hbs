@@ -5,7 +5,7 @@
         <link href="https://fonts.googleapis.com/css?family=Kalam|Scope+One" rel="stylesheet">
 
         <script>
-            
+
             function simplifyPassword(password) {
                 return password
                     .replace(/(-|\s|,|\.)/g, '')
@@ -17,7 +17,7 @@
                 let spass = simplifyPassword(pass)
                 try {
                     var decrypted = CryptoJS.AES.decrypt(
-                        document.getElementById("message").innerHTML, 
+                        document.getElementById("message").innerHTML,
                         spass
                         ).toString(CryptoJS.enc.Utf8);
                     document.getElementById("output").innerHTML = decrypted;
@@ -31,16 +31,16 @@
                     item.appendChild(document.createTextNode(pass));
                     list.appendChild(item);
                 }
-            } 
+            }
 
-            
+
         </script>
         <style>
             .encrypted-message {
                 font-family: monospace;
                 max-height: 300px;
                 overflow: scroll;
-                white-space: pre-wrap;    
+                white-space: pre-wrap;
                 overflow-wrap: break-word;
                 padding: 10px;
                 background-color: #333;
@@ -85,6 +85,7 @@
                 color: #666;
                 font-size: 80%;
             }
+            img { width: 100%; }
 
         </style>
     </head>
@@ -112,4 +113,3 @@
         </div>
     </body>
 </html>
-
