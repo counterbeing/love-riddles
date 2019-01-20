@@ -12,3 +12,4 @@ yarn-error.log
 *.sln
 deploy/
 deploy
+policy_signature.txt
